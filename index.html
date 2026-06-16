@@ -100,7 +100,8 @@
 
         .card-footer { display: flex; flex-direction: column; gap: 10px; padding-top: 10px; border-top: 1px solid #f1f5f9; }
         .price { font-size: 1.2rem; font-weight: 800; color: #b45309; }
-        
+        .price-free { color: var(--success) !important; }
+
         .buy-btn-compact {
             width: 100%; background: #f59e0b; color: var(--primary); padding: 8px 10px; border-radius: 6px; font-weight: 700; text-align: center; border: none; cursor: pointer; font-size: 0.82rem; transition: 0.2s; box-shadow: 0 2px 5px rgba(245, 158, 11, 0.2);
         }
@@ -136,10 +137,6 @@
         .faq-question:hover { background: #fafafa; }
         .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-        /* --- Classroom Media Unit --- */
-        #player-section { display: none; background: #0b0f19; padding: 60px 8%; text-align: center; border-bottom: 4px solid var(--accent); }
-        .video-box { max-width: 950px; margin: 0 auto; aspect-ratio: 16/9; background: #111827; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-
         /* --- Authentication Modal --- */
         .modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 2000; }
         .modal-box { background: var(--white); padding: 45px 35px; border-radius: 24px; width: 100%; max-width: 420px; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
@@ -149,7 +146,7 @@
         .toggle-prompt { margin-top: 20px; font-size: 0.88rem; text-align: center; color: var(--text-muted); }
         .toggle-prompt span { color: var(--accent); cursor: pointer; font-weight: 600; text-decoration: underline; }
 
-        /* 📱 MOBILE NAVIGATION SCREEN SETTINGS (PERFECT INLINE FIT) */
+        /* 📱 MOBILE NAVIGATION SCREEN SETTINGS */
         @media (max-width: 768px) {
             header { 
                 padding: 0.8rem 4% !important; 
@@ -159,32 +156,16 @@
                 align-items: center !important; 
                 flex-wrap: nowrap !important; 
             }
-            .logo { 
-                font-size: 1.1rem !important; 
-            }
-            #auth-status { 
-                gap: 0.4rem !important; 
-                flex-wrap: nowrap !important; 
-            }
-            .user-chip { 
-                font-size: 0.72rem !important; 
-                padding: 4px 8px !important; 
-                max-width: 105px !important; 
-            }
-            .logout-btn { 
-                font-size: 0.72rem !important; 
-                padding: 4px 2px !important; 
-            }
+            .logo { font-size: 1.1rem !important; }
+            #auth-status { gap: 0.4rem !important; flex-wrap: nowrap !important; }
+            .user-chip { font-size: 0.72rem !important; padding: 4px 8px !important; max-width: 105px !important; }
+            .logout-btn { font-size: 0.72rem !important; padding: 4px 2px !important; }
 
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1rem; }
             .section-padding { padding: 50px 4%; }
-            .section-header h2 { font-size: 1.6rem; }
             
-            .courses-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
+            .courses-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .card-img { height: 110px; }
             .card-body { padding: 10px; }
             .card-body h3 { font-size: 0.85rem; height: 2.8em; margin-bottom: 4px; }
@@ -217,12 +198,6 @@
         </div>
     </section>
 
-    <section id="player-section">
-        <h2 style="color: var(--white); margin-bottom: 25px; font-weight:700;" id="player-title">Classroom System Player</h2>
-        <div class="video-box" id="video-container"></div>
-        <button class="btn-main" style="margin-top:25px; background:#ef4444; box-shadow:none;" onclick="closePlayer()">Terminate Stream</button>
-    </section>
-
     <section class="section-padding features-section">
         <div class="section-header">
             <h2>How We Build Engineers</h2>
@@ -248,7 +223,6 @@
     </section>
 
     <div id="projects-root" class="section-padding">
-        
         <div class="section-header">
             <h2><i class="fa-brands fa-html5" style="color: #e34c26; margin-right: 10px;"></i> UI & Frontend Architecture</h2>
             <p>Clean structural responsive patterns. Master CSS matrix grid and absolute asset layouts.</p>
@@ -351,13 +325,11 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        
-        // Sahi import lagaya hai Firestore libraries ke liye taaki load blocked na ho
         import { getFirestore, doc, setDoc, getDoc, arrayUnion, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // ⚠️ APNA FIREBASE CONFIG CONFIGURATION YAHAAN PASTE KAREIN
         const firebaseConfig = {
-           apiKey: "AIzaSyC84XqN0Z6pk7QDFPimIXFJOSAIVAVqM1w",
+          apiKey: "AIzaSyC84XqN0Z6pk7QDFPimIXFJOSAIVAVqM1w",
   authDomain: "courses-d6f51.firebaseapp.com",
   projectId: "courses-d6f51",
   storageBucket: "courses-d6f51.firebasestorage.app",
@@ -374,7 +346,6 @@
         let isSignupMode = true; 
         let currentPendingSelection = null;
 
-        // Reactive Auth Verification & User Name Fetching Logic
         onAuthStateChanged(auth, async (activeUserInstance) => {
             const authStatusContainer = document.getElementById('auth-status');
             if (activeUserInstance) {
@@ -391,7 +362,6 @@
             triggerRealtimeCourseFetch();
         });
 
-        // Dynamic Realtime Course Fetch from Firestore
         function triggerRealtimeCourseFetch() {
             onSnapshot(collection(db, "courses"), (snapshot) => {
                 document.getElementById('html-container').innerHTML = "";
@@ -407,6 +377,8 @@
                     cardElement.setAttribute('data-title', course.name);
                     cardElement.setAttribute('data-price', course.price);
                     cardElement.setAttribute('data-video', course.video);
+                    cardElement.setAttribute('data-word', course.wordFile || ""); 
+                    cardElement.setAttribute('data-free', course.isFree || course.price === 0 ? "true" : "false"); 
 
                     let displayTag = "Frontend";
                     if(course.category === 'html') displayTag = "UI/UX Layout";
@@ -414,6 +386,18 @@
                     if(course.category === 'cpp') displayTag = "Low Level";
 
                     const hasPurchased = cachedUserData && cachedUserData.purchasedCourses && cachedUserData.purchasedCourses.includes(course.id);
+                    const isCourseFree = course.isFree || course.price === 0;
+
+                    const priceHTML = isCourseFree 
+                        ? `<span class="price price-free">FREE</span>` 
+                        : `<span class="price">₹${course.price}</span>`;
+
+                    let buttonText = 'Buy Now';
+                    if (hasPurchased) {
+                        buttonText = 'Classroom';
+                    } else if (isCourseFree) {
+                        buttonText = 'Get Free';
+                    }
 
                     cardElement.innerHTML = `
                         <div class="card-img" style="background-image: url('${course.image}');">
@@ -425,9 +409,9 @@
                                 <p>${course.description}</p>
                             </div>
                             <div class="card-footer">
-                                <span class="price">₹${course.price}</span>
-                                <button class="buy-btn-compact" style="${hasPurchased ? 'background: var(--success); color: white; box-shadow:none;' : ''}">
-                                    ${hasPurchased ? 'Classroom' : 'Buy Now'}
+                                ${priceHTML}
+                                <button class="buy-btn-compact" style="${hasPurchased ? 'background: var(--success); color: white; box-shadow:none;' : isCourseFree ? 'background: var(--success); color: white;' : ''}">
+                                    ${buttonText}
                                 </button>
                             </div>
                         </div>
@@ -449,23 +433,31 @@
         }
 
         function interceptPurchaseIntent(cardElement) {
+            const isFreeCourse = cardElement.getAttribute('data-free') === "true";
+            
             currentPendingSelection = {
                 id: cardElement.getAttribute('data-id'),
                 title: cardElement.getAttribute('data-title'),
-                price: cardElement.getAttribute('data-price')
+                price: cardElement.getAttribute('data-price'),
+                isFree: isFreeCourse
             };
+            
             if (!currentUserObj) {
                 isSignupMode = true;
                 syncModalLabels();
                 window.openModal();
             } else {
-                startRazorpayGatewayProcess();
+                if (isFreeCourse) {
+                    finalizeDatabaseAccessLicense(currentPendingSelection.id);
+                } else {
+                    startRazorpayGatewayProcess();
+                }
             }
         }
 
         window.startRazorpayGatewayProcess = () => {
             const checkoutOptions = {
-                "key": "rzp_live_T1xW3QMmKQTXWr", 
+                "key": "abcd", 
                 "amount": currentPendingSelection.price * 100,
                 "currency": "INR",
                 "name": "Vector Academy Engineering",
@@ -485,7 +477,11 @@
                     purchasedCourses: arrayUnion(courseId) 
                 }, { merge: true });
 
-                alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
+                if (currentPendingSelection && currentPendingSelection.isFree) {
+                    alert("🎉 Success! Free module has been added to your profile classroom.");
+                } else {
+                    alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
+                }
                 
                 if(cachedUserData) {
                     if(!cachedUserData.purchasedCourses) cachedUserData.purchasedCourses = [];
@@ -496,14 +492,15 @@
                 triggerRealtimeCourseFetch();
             } catch(e) {
                 console.error("Sync Error: ", e);
-                alert("Payment completed but database mapping lagged.");
+                alert("Processing mapping lagged inside database arrays.");
             }
         }
 
+        // NAYI WINDOW ME OPEN KARNE KA UPDATED LOGIC
         async function openClassroomStream(card) {
             const courseId = card.getAttribute('data-id');
-            const dynamicEmbedUrl = card.getAttribute('data-video');
-            const targetTitleStr = card.getAttribute('data-title');
+            let dynamicEmbedUrl = card.getAttribute('data-video');
+            const wordFileUrl = card.getAttribute('data-word'); 
             
             if (!currentUserObj) {
                 alert("Security Check: Session context unverified. Please login.");
@@ -515,10 +512,28 @@
             const freshUserData = docSnapshot.data();
 
             if (freshUserData && freshUserData.purchasedCourses && freshUserData.purchasedCourses.includes(courseId)) {
-                document.getElementById('player-title').innerText = "Active Feed: " + targetTitleStr;
-                document.getElementById('video-container').innerHTML = `<iframe width="100%" height="100%" src="${dynamicEmbedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-                document.getElementById('player-section').style.display = 'block';
-                window.scrollTo({top: document.getElementById('player-section').offsetTop - 20, behavior: 'smooth'});
+                
+                let openedWindowsCount = 0;
+
+                // 1. MS WORD FILE KO NEW WINDOW ME OPEN KARNA
+                if (wordFileUrl && wordFileUrl.trim() !== "") {
+                    window.open(wordFileUrl, '_blank');
+                    openedWindowsCount++;
+                }
+
+                // 2. VIDEO KO NEW WINDOW ME OPEN KARNA
+                if (dynamicEmbedUrl && dynamicEmbedUrl.trim() !== "") {
+                    // Agar YouTube ka embed link hai, to use normal player link me convert karein taaki full page par sahi chale
+                    if (dynamicEmbedUrl.includes('/embed/')) {
+                        dynamicEmbedUrl = dynamicEmbedUrl.replace('/embed/', '/watch?v=');
+                    }
+                    window.open(dynamicEmbedUrl, '_blank');
+                    openedWindowsCount++;
+                }
+
+                if (openedWindowsCount === 0) {
+                    alert("No active stream or resource documents linked to this node.");
+                }
             } else {
                 alert("Security Alert: Enrolment trace data not logged inside server arrays.");
             }
@@ -561,13 +576,19 @@
                     await signInWithEmailAndPassword(auth, inputEmailVal, inputPasswordVal);
                 }
                 window.closeModal();
+                
+                if (currentPendingSelection) {
+                    if (currentPendingSelection.isFree) {
+                        finalizeDatabaseAccessLicense(currentPendingSelection.id);
+                    } else {
+                        startRazorpayGatewayProcess();
+                    }
+                }
             } catch(authProcessingException) { alert(`Pipeline Exception: ${authProcessingException.message}`); }
         };
 
-        // Initialize display configuration defaults
         syncModalLabels();
 
-        window.closePlayer = () => { document.getElementById('player-section').style.display = 'none'; document.getElementById('video-container').innerHTML = ''; };
         window.openModal = () => { document.getElementById('auth-modal').style.display = 'flex'; };
         window.closeModal = () => { document.getElementById('auth-modal').style.display = 'none'; };
         window.logOutSession = () => { signOut(auth).then(() => { window.location.reload(); }); };
