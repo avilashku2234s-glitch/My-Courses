@@ -38,12 +38,12 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.03);
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; white-space: nowrap; }
         .logo span { color: var(--accent); }
 
         #auth-status { display: flex; align-items: center; gap: 1rem; }
-        .user-chip { font-size: 0.85rem; font-weight: 600; background: #f1f5f9; padding: 6px 14px; border-radius: 30px; color: var(--accent); border: 1px solid #e2e8f0; }
-        .logout-btn { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 0.85rem; padding: 5px; }
+        .user-chip { font-size: 0.85rem; font-weight: 600; background: #f1f5f9; padding: 6px 14px; border-radius: 30px; color: var(--accent); border: 1px solid #e2e8f0; white-space: nowrap; max-width: 180px; overflow: hidden; text-overflow: ellipsis; }
+        .logout-btn { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 0.85rem; padding: 5px; white-space: nowrap; }
 
         /* --- Hero Grid Design --- */
         .hero {
@@ -67,13 +67,7 @@
         .stat-item h3 { font-size: 2.5rem; color: var(--primary); font-weight: 700; }
         .stat-item p { color: var(--text-muted); font-size: 0.95rem; margin-top: 5px; }
 
-        /* --- Section Configurations --- */
-        .section-padding { padding: 90px 8%; }
-        .section-header { text-align: center; max-width: 650px; margin: 0 auto 55px; }
-        .section-header h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
-        .section-header p { color: var(--text-muted); font-size: 1.05rem; }
-
-        /* --- Amazon Style Compact Cards Layout --- */
+        /* --- Cards Layout --- */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -112,7 +106,7 @@
         }
         .buy-btn-compact:hover { background: #d97706; }
 
-        /* --- Feature Highlights (Why Us) --- */
+        /* --- Feature Highlights --- */
         .features-section { background: var(--white); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .feature-box { text-align: center; padding: 20px; }
@@ -120,14 +114,14 @@
         .feature-box h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
         .feature-box p { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- Interactive Student Roadmaps --- */
+        /* --- Roadmaps --- */
         .roadmap-container { max-width: 800px; margin: 0 auto; position: relative; padding-left: 30px; border-left: 3px dashed #cbd5e1; }
         .roadmap-step { position: relative; margin-bottom: 40px; }
         .roadmap-step::before { content: ''; position: absolute; width: 16px; height: 16px; background: var(--accent); border: 4px solid var(--white); border-radius: 50%; left: -39px; top: 5px; }
         .roadmap-step h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 5px; }
         .roadmap-step p { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- Blogs Setup --- */
+        /* --- Blogs --- */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .blog-item { background: var(--white); padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; transition: 0.3s; }
         .blog-item:hover { border-color: var(--accent); transform: scale(1.01); }
@@ -135,7 +129,7 @@
         .blog-item h4 { font-size: 1.2rem; margin-bottom: 12px; font-weight: 700; }
         .blog-item p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
 
-        /* --- FAQs (Accordion Component) --- */
+        /* --- FAQs --- */
         .faq-wrapper { max-width: 750px; margin: 0 auto; }
         .faq-card { background: var(--white); margin-bottom: 15px; border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; }
         .faq-question { padding: 20px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: var(--white); transition: 0.2s; }
@@ -146,7 +140,7 @@
         #player-section { display: none; background: #0b0f19; padding: 60px 8%; text-align: center; border-bottom: 4px solid var(--accent); }
         .video-box { max-width: 950px; margin: 0 auto; aspect-ratio: 16/9; background: #111827; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
 
-        /* --- Authentication Adaptive Modal Box --- */
+        /* --- Authentication Modal --- */
         .modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 2000; }
         .modal-box { background: var(--white); padding: 45px 35px; border-radius: 24px; width: 100%; max-width: 420px; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
         .modal-box h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 700; letter-spacing: -0.5px; }
@@ -155,15 +149,38 @@
         .toggle-prompt { margin-top: 20px; font-size: 0.88rem; text-align: center; color: var(--text-muted); }
         .toggle-prompt span { color: var(--accent); cursor: pointer; font-weight: 600; text-decoration: underline; }
 
-        /* 📱 RESPONSIVE MEDIA BREAKPOINTS (AMAZON STYLE 2 COLUMNS FOR MOBILE) */
+        /* 📱 MOBILE NAVIGATION SCREEN SETTINGS (PERFECT INLINE FIT) */
         @media (max-width: 768px) {
-            header { padding: 1rem 4%; }
+            header { 
+                padding: 0.8rem 4% !important; 
+                display: flex !important; 
+                flex-direction: row !important; 
+                justify-content: space-between !important; 
+                align-items: center !important; 
+                flex-wrap: nowrap !important; 
+            }
+            .logo { 
+                font-size: 1.1rem !important; 
+            }
+            #auth-status { 
+                gap: 0.4rem !important; 
+                flex-wrap: nowrap !important; 
+            }
+            .user-chip { 
+                font-size: 0.72rem !important; 
+                padding: 4px 8px !important; 
+                max-width: 105px !important; 
+            }
+            .logout-btn { 
+                font-size: 0.72rem !important; 
+                padding: 4px 2px !important; 
+            }
+
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1rem; }
             .section-padding { padding: 50px 4%; }
             .section-header h2 { font-size: 1.6rem; }
             
-            /* Enforcing exactly 2 columns rule on mobile view */
             .courses-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -236,22 +253,19 @@
             <h2><i class="fa-brands fa-html5" style="color: #e34c26; margin-right: 10px;"></i> UI & Frontend Architecture</h2>
             <p>Clean structural responsive patterns. Master CSS matrix grid and absolute asset layouts.</p>
         </div>
-        <div class="courses-grid" id="html-container">
-            </div>
+        <div class="courses-grid" id="html-container"></div>
 
         <div class="section-header" style="margin-top: 50px;">
             <h2><i class="fa-brands fa-java" style="color: #f89820; margin-right: 10px;"></i> Java Core Enterprise Engines</h2>
             <p>Object blueprints manipulation, secure data logs encapsulation, and standard algorithmic verification systems.</p>
         </div>
-        <div class="courses-grid" id="java-container">
-            </div>
+        <div class="courses-grid" id="java-container"></div>
 
         <div class="section-header" style="margin-top: 50px;">
             <h2><i class="fa-solid fa-microchip" style="color: #00599c; margin-right: 10px;"></i> Low Level Systems C & C++</h2>
             <p>Direct pointer mechanics control, explicit stack management systems, and safe high-speed IO filing workflows.</p>
         </div>
-        <div class="courses-grid" id="cpp-container">
-            </div>
+        <div class="courses-grid" id="cpp-container"></div>
     </div>
 
     <section class="section-padding" style="background: #f1f5f9;">
@@ -324,6 +338,7 @@
         <div class="modal-box">
             <span style="position:absolute; right:25px; top:20px; cursor:pointer; color:var(--text-muted); font-weight:700;" onclick="closeModal()">✕</span>
             <h3 id="modal-title">Create Account to Continue</h3>
+            <input type="text" id="username" placeholder="Enter Your Full Name">
             <input type="email" id="email" placeholder="Enter Email Address">
             <input type="password" id="password" placeholder="Enter Account Password">
             <button class="btn-main" id="auth-btn" style="width:100%">Create Account</button>
@@ -336,7 +351,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, arrayUnion, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        
+        // Sahi import lagaya hai Firestore libraries ke liye taaki load blocked na ho
+        import { getFirestore, doc, setDoc, getDoc, arrayUnion, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // ⚠️ APNA FIREBASE CONFIG CONFIGURATION YAHAAN PASTE KAREIN
         const firebaseConfig = {
@@ -357,15 +374,16 @@
         let isSignupMode = true; 
         let currentPendingSelection = null;
 
-        // Reactive Auth Verification & Protected Verification Layer
+        // Reactive Auth Verification & User Name Fetching Logic
         onAuthStateChanged(auth, async (activeUserInstance) => {
             const authStatusContainer = document.getElementById('auth-status');
             if (activeUserInstance) {
                 currentUserObj = activeUserInstance;
                 const docSnapshot = await getDoc(doc(db, "users", activeUserInstance.uid));
-                cachedUserData = docSnapshot.data() || { email: activeUserInstance.email, purchasedCourses: [] };
+                cachedUserData = docSnapshot.data() || { name: "", email: activeUserInstance.email, purchasedCourses: [] };
                 
-                authStatusContainer.innerHTML = `<span class="user-chip">👤 ${activeUserInstance.email}</span> <button class="logout-btn" onclick="window.logOutSession()">Logout</button>`;
+                const userDisplayName = cachedUserData.name ? cachedUserData.name : activeUserInstance.email.split('@')[0];
+                authStatusContainer.innerHTML = `<span class="user-chip">👤 ${userDisplayName}</span> <button class="logout-btn" onclick="window.logOutSession()">Logout</button>`;
             } else {
                 currentUserObj = null; cachedUserData = null;
                 authStatusContainer.innerHTML = `<button class="btn-main" style="padding:10px 22px; font-size:0.88rem;" onclick="window.openModal()">Access Account</button>`;
@@ -373,7 +391,7 @@
             triggerRealtimeCourseFetch();
         });
 
-        // Dynamic Realtime Stream Fetch from Firestore
+        // Dynamic Realtime Course Fetch from Firestore
         function triggerRealtimeCourseFetch() {
             onSnapshot(collection(db, "courses"), (snapshot) => {
                 document.getElementById('html-container').innerHTML = "";
@@ -397,7 +415,6 @@
 
                     const hasPurchased = cachedUserData && cachedUserData.purchasedCourses && cachedUserData.purchasedCourses.includes(course.id);
 
-                    // Updated innerHTML with compact Amazon Style Card Schema
                     cardElement.innerHTML = `
                         <div class="card-img" style="background-image: url('${course.image}');">
                             <span class="category-tag">${displayTag}</span>
@@ -448,7 +465,7 @@
 
         window.startRazorpayGatewayProcess = () => {
             const checkoutOptions = {
-                "key": "rzp_live_T1xW3QMmKQTXWr", // Inject your Razorpay Key ID here
+                "key": "abcd", 
                 "amount": currentPendingSelection.price * 100,
                 "currency": "INR",
                 "name": "Vector Academy Engineering",
@@ -461,29 +478,27 @@
             rzpPaymentEngine.open();
         };
 
-         async function finalizeDatabaseAccessLicense(courseId) {
-    try {
-        const dataReferenceDoc = doc(db, "users", currentUserObj.uid);
-        
-        // 🔥 UPDATE KI JAGAH SETDOC: Agar user document nahi bhi hoga, toh ye automatic bana dega!
-        await setDoc(dataReferenceDoc, { 
-            purchasedCourses: arrayUnion(courseId) 
-        }, { merge: true });
+        async function finalizeDatabaseAccessLicense(courseId) {
+            try {
+                const dataReferenceDoc = doc(db, "users", currentUserObj.uid);
+                await setDoc(dataReferenceDoc, { 
+                    purchasedCourses: arrayUnion(courseId) 
+                }, { merge: true });
 
-        alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
-        
-        if(cachedUserData) {
-            if(!cachedUserData.purchasedCourses) cachedUserData.purchasedCourses = [];
-            if(!cachedUserData.purchasedCourses.includes(courseId)) {
-                cachedUserData.purchasedCourses.push(courseId);
+                alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
+                
+                if(cachedUserData) {
+                    if(!cachedUserData.purchasedCourses) cachedUserData.purchasedCourses = [];
+                    if(!cachedUserData.purchasedCourses.includes(courseId)) {
+                        cachedUserData.purchasedCourses.push(courseId);
+                    }
+                }
+                triggerRealtimeCourseFetch();
+            } catch(e) {
+                console.error("Sync Error: ", e);
+                alert("Payment completed but database mapping lagged.");
             }
         }
-        triggerRealtimeCourseFetch();
-    } catch(e) {
-        console.error("Sync Error: ", e);
-        alert("Payment completed but database mapping lagged.");
-    }
-}
 
         async function openClassroomStream(card) {
             const courseId = card.getAttribute('data-id');
@@ -515,40 +530,47 @@
             const titleNode = document.getElementById('modal-title');
             const mainActionBtn = document.getElementById('auth-btn');
             const navigationPromptLink = document.getElementById('toggle-prompt-text');
+            const nameFieldNode = document.getElementById('username');
 
             if (isSignupMode) {
                 titleNode.innerText = "Create Account to Continue";
                 mainActionBtn.innerText = "Create Account";
+                nameFieldNode.style.display = "block";
                 navigationPromptLink.innerHTML = `Already registered? <span onclick="window.toggleAuthMode()">Login Profile</span>`;
             } else {
                 titleNode.innerText = "Login to Profile";
                 mainActionBtn.innerText = "Secure Login";
+                nameFieldNode.style.display = "none";
                 navigationPromptLink.innerHTML = `New to the platform? <span onclick="window.toggleAuthMode()">Register Account</span>`;
             }
         }
 
         document.getElementById('auth-btn').onclick = async () => {
+            const inputNameVal = document.getElementById('username').value.trim();
             const inputEmailVal = document.getElementById('email').value.trim();
             const inputPasswordVal = document.getElementById('password').value.trim();
             
+            if(isSignupMode && !inputNameVal) { alert("Please enter your name profile value setup."); return; }
             if(!inputEmailVal || !inputPasswordVal) { alert("Input lines cannot process null entries."); return; }
 
             try {
                 if (isSignupMode) {
                     const authenticationResult = await createUserWithEmailAndPassword(auth, inputEmailVal, inputPasswordVal);
-                    await setDoc(doc(db, "users", authenticationResult.user.uid), { email: inputEmailVal, purchasedCourses: [] });
+                    await setDoc(doc(db, "users", authenticationResult.user.uid), { name: inputNameVal, email: inputEmailVal, purchasedCourses: [] });
                 } else {
                     await signInWithEmailAndPassword(auth, inputEmailVal, inputPasswordVal);
                 }
                 window.closeModal();
-                if (currentPendingSelection) { setTimeout(() => { startRazorpayGatewayProcess(); }, 500); }
             } catch(authProcessingException) { alert(`Pipeline Exception: ${authProcessingException.message}`); }
         };
+
+        // Initialize display configuration defaults
+        syncModalLabels();
 
         window.closePlayer = () => { document.getElementById('player-section').style.display = 'none'; document.getElementById('video-container').innerHTML = ''; };
         window.openModal = () => { document.getElementById('auth-modal').style.display = 'flex'; };
         window.closeModal = () => { document.getElementById('auth-modal').style.display = 'none'; };
-        window.logOutSession = () => signOut(auth);
+        window.logOutSession = () => { signOut(auth).then(() => { window.location.reload(); }); };
 
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
