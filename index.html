@@ -461,22 +461,29 @@
             rzpPaymentEngine.open();
         };
 
-        async function finalizeDatabaseAccessLicense(courseId) {
-            try {
-                const dataReferenceDoc = doc(db, "users", currentUserObj.uid);
-                await updateDoc(dataReferenceDoc, { purchasedCourses: arrayUnion(courseId) });
-                alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
-                
-                if(cachedUserData) {
-                    if(!cachedUserData.purchasedCourses) cachedUserData.purchasedCourses = [];
-                    cachedUserData.purchasedCourses.push(courseId);
-                }
-                triggerRealtimeCourseFetch();
-            } catch(e) {
-                console.error("Sync Error: ", e);
-                alert("Payment completed but database mapping lagged.");
+         async function finalizeDatabaseAccessLicense(courseId) {
+    try {
+        const dataReferenceDoc = doc(db, "users", currentUserObj.uid);
+        
+        // 🔥 UPDATE KI JAGAH SETDOC: Agar user document nahi bhi hoga, toh ye automatic bana dega!
+        await setDoc(dataReferenceDoc, { 
+            purchasedCourses: arrayUnion(courseId) 
+        }, { merge: true });
+
+        alert("🎉 Transaction Successful! This course module has been unlocked permanently.");
+        
+        if(cachedUserData) {
+            if(!cachedUserData.purchasedCourses) cachedUserData.purchasedCourses = [];
+            if(!cachedUserData.purchasedCourses.includes(courseId)) {
+                cachedUserData.purchasedCourses.push(courseId);
             }
         }
+        triggerRealtimeCourseFetch();
+    } catch(e) {
+        console.error("Sync Error: ", e);
+        alert("Payment completed but database mapping lagged.");
+    }
+}
 
         async function openClassroomStream(card) {
             const courseId = card.getAttribute('data-id');
